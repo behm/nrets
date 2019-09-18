@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\metadata-system-response.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\metadata-system-response.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.2.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.4" />

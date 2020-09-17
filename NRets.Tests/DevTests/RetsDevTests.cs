@@ -2,12 +2,20 @@
 using System;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace NRets.Tests.DevTests
 {
     [Trait("Category", TestCategories.Development)]
     public class RetsDevTests
     {
+        private readonly ITestOutputHelper _output;
+
+        public RetsDevTests(ITestOutputHelper output)
+        {
+            _output = output;
+        }
+
         [Fact]
         public async Task EndToEndProcessing()
         {
@@ -18,19 +26,19 @@ namespace NRets.Tests.DevTests
                 var metadata = await retsSession.GetMetadataAsync();
                 foreach (var resource in metadata.Resources)
                 {
-                    Console.WriteLine($"Resource: {resource.StandardName} [{resource.VisibleName}]");
+                    _output.WriteLine($"Resource: {resource.StandardName} [{resource.VisibleName}]");
                     foreach (var retsClass in resource.Classes)
                     {
-                        Console.WriteLine($"Class: {retsClass.StandardName} [{retsClass.VisibleName}]");
-                        Console.WriteLine($"Tables:");
+                        _output.WriteLine($"Class: {retsClass.StandardName} [{retsClass.VisibleName}]");
+                        _output.WriteLine($"Tables:");
                         foreach (var table in retsClass.Tables)
                         {
-                            Console.WriteLine("=====================================================================");
-                            Console.WriteLine($"Table: Resource-{table.Resource} Class:{table.Class}");
-                            Console.WriteLine("=====================================================================");
+                            _output.WriteLine("=====================================================================");
+                            _output.WriteLine($"Table: Resource-{table.Resource} Class:{table.Class}");
+                            _output.WriteLine("=====================================================================");
                             foreach (var field in table.Fields)
                             {
-                                Console.WriteLine($"{field.StandardName,40} ({field.DataType}:{field.Precision})");
+                                _output.WriteLine($"{field.StandardName,40} ({field.DataType}:{field.Precision})");
                             }
                         }
                     }

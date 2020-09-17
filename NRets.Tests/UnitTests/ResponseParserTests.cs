@@ -1,6 +1,7 @@
 ﻿using NRets.Parsers;
+using NRets.Tests.Shared;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -57,6 +58,26 @@ namespace NRets.Tests.UnitTests
             Assert.Equal("https://rase.rets.paragonrels.com/rets/fnisrets.aspx/RASE/login", result.LoginUrl);
             Assert.Equal("/rets/fnisrets.aspx/RASE/logout", result.LogoutUrlPath);
             Assert.Equal("/rets/fnisrets.aspx/RASE/search", result.SearchUrlPath);
+        }
+
+        [Fact]
+        public void ParseMetadata_GivenMetadataSystemReponseText_ParsesSuccessfully()
+        {
+            // Arrange
+            var responseText = TestHelper.GetEmbeddedResourceText("metadata-system-response.txt");
+            var responseParser = new ResponseParser();
+
+            // Act
+            var result = responseParser.ParseMetadataSystemResponse(responseText);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.NotNull(result.MetadataVersion);
+            Assert.NotNull(result.MetadataTimestamp);
+            Assert.Equal("19.2.2548", result.MetadataVersion);
+            Assert.Equal("2019-02-01T18:28:27.3Z", result.MetadataTimestamp);
+            Assert.Equal(13, result.Resources.Count());
+            Assert.Equal(34, result.Resources.Sum(x => x.Classes.Count()));
         }
     }
 }

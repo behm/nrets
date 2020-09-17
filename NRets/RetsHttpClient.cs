@@ -10,7 +10,7 @@ namespace NRets
     {
         Task<LoginResponse> LoginAsync(Uri loginUri);
         Task LogoutAsync();
-        Task<RetsMetadata> GetMetadata();
+        Task<RetsMetadata> GetMetadataAsync();
     }
 
     public class RetsHttpClient : IRetsHttpClient
@@ -74,7 +74,7 @@ namespace NRets
             }
         }
 
-        public async Task<RetsMetadata> GetMetadata()
+        public async Task<RetsMetadata> GetMetadataAsync()
         {
             if (_loginResponse == null)
             {
@@ -105,6 +105,11 @@ namespace NRets
                     var retsReply = _replyParser.Parse(retsReplyText);
 
                     // todo: parse the metadata response
+                    if (retsReply.IsSuccess)
+                    {
+                        var retsMetadata = _responseParser.ParseMetadataSystemResponse(retsReplyText);
+                        return retsMetadata;
+                    }
 
                     return null;
                 }

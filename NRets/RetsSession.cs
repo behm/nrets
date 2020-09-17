@@ -44,6 +44,11 @@ namespace NRets
             LoginResponse = null;
         }
 
+        public async Task<RetsMetadata> GetMetadataAsync()
+        {
+            return await _retsHttpClient.GetMetadataAsync();
+        }
+
         private HttpClient GetHttpClient(string username, string password, string userAgent)
         {
             var handler = new HttpClientHandler

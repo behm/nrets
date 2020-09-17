@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using Microsoft.Extensions.Configuration;
 
 namespace NRets.Tests.Shared
 {
@@ -27,6 +30,26 @@ namespace NRets.Tests.Shared
                 .Bind(settings);
 
             return settings;
+        }
+
+        public static string GetEmbeddedResourceText(string filename)
+        {
+            // todo: if this is costly, load it up in constructor or whenever test class is loaded.
+            var assembly = Assembly.GetExecutingAssembly();
+
+            var resourcePath = $"{assembly.GetName().Name}.Resources.{filename}";
+
+            using (var stream = assembly.GetManifestResourceStream(resourcePath))
+            {
+                if (stream == null) { throw new Exception($"Test data for {filename} was not found"); }
+
+                using (var reader = new StreamReader(stream))
+                {
+                    var fileContent = reader.ReadToEnd();
+
+                    return fileContent;
+                }
+            }
         }
     }
 }

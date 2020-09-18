@@ -1,10 +1,6 @@
-name: NRETS - Build & Test
+name: NRETS CI - Build & Test
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push]
 
 jobs:
   build:

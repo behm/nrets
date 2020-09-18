@@ -7,13 +7,14 @@
     <Version>0.1.0-alpha</Version>
     <Authors>Brian Behm</Authors>
     <Product>nRETS</Product>
-    <Description>.NET RETS library to download real estate listings from your MLS provider</Description>
+    <Description>.NET Standard RETS library for retrieving real estate listings and photos from your MLS provider's RETS server.</Description>
     <Copyright>Copyright 2020 Brian Behm</Copyright>
     <RepositoryUrl>https://github.com/behm/nrets</RepositoryUrl>
     <AssemblyVersion>0.0.1.0</AssemblyVersion>
     <FileVersion>0.0.1.0</FileVersion>
-    <PackageTags>RETS, Real Estate, .NET</PackageTags>
+    <PackageTags>RETS, Real Estate Listings, .NET, MLS</PackageTags>
     <Company />
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>

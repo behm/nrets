@@ -1,10 +1,8 @@
 # nRETS
-
-[![Actions Status](https://github.com/behm/nrets/workflows/build-and-test/badge.svg)](https://github.com/behm/nrets/actions)
 [![NuGet](http://img.shields.io/nuget/v/nrets.svg)](https://www.nuget.org/packages/nRETS/)
 
 ## What is nRETS?
-nRETS is a .NET Standard Library used to read real estate data from RETS servers.  The goal is to make a library that works better with .NET Framework and .NET Core code.  It abstracts away the HTTP communication and payload parsing of the data so you can use it for your application.
+nRETS is a .NET Standard Library used to read real estate data from RETS servers.  The goal is to make a library that works  with .NET Framework and .NET Core code.  It abstracts away the HTTP communication and payload parsing of the data so you can use it for your application.
 
 ## Status of the project
 This is just getting started and we are starting from the ground up so while it's not fully functional yet, bear with us a new features are added.  

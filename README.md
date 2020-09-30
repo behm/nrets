@@ -1,4 +1,5 @@
 # nRETS
+![NRETS - Build & Test](https://github.com/behm/nrets/workflows/NRETS%20-%20Build%20&%20Test/badge.svg)
 [![NuGet](http://img.shields.io/nuget/v/nrets.svg)](https://www.nuget.org/packages/nRETS/)
 
 ## What is nRETS?
